@@ -1,6 +1,13 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: hung1
+  Date: 10/9/2023
+  Time: 7:51 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,11 +34,11 @@
 
 <script>
 
-const handleEditCatalog= (id)=>{
-    console.log(id)
+    const handleEditCatalog= (id)=>{
+        console.log(id)
 
         $.ajax({
-            url: `http://localhost:8080/admin/catalog/edit/${id}`,
+            url: `http://localhost:8080/admin/catalog/edit/`+id,
             method: 'GET',
             dataType: 'json',
             headers: {
@@ -48,7 +55,7 @@ const handleEditCatalog= (id)=>{
                 console.error('Error:', error);
             }
         });
-}
+    }
 </script>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
@@ -302,21 +309,22 @@ const handleEditCatalog= (id)=>{
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="c:${list}">
-                                <td th:text="${c.id}">1</td>
-                                <td th:text="${c.name}">Category 1</td>
-                                <td th:text="${c.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#editModal" th:onclick=|handleEditCatalog(${c.id})|>Edit</button>
-                                </td>
-                                <td>
-                                    <a th:href="|/admin/catalog/delete/${c.id}|" onclick="return confirm('Bạn có chắc muốn xáo không')" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            <c:forEach items="${list}" var="c">
+                                <tr>
+                                    <td >${c.id}</td>
+                                    <td >${c.name}</td>
+                                    <td >${c.description}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#editModal" onclick="handleEditCatalog(${c.id})">Edit</button>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/catalog/delete/${c.id}" onclick="return confirm('Bạn có chắc muốn xáo không')" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+
 
                             </tbody>
 
@@ -376,7 +384,7 @@ const handleEditCatalog= (id)=>{
 <!-- Modal Add -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/admin/catalog/add" method="post" th:object="${cat}">
+        <form action="<%=request.getContextPath()%>/admin/catalog/add" method="post" >
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Category</h1>
@@ -386,32 +394,32 @@ const handleEditCatalog= (id)=>{
 
                     <div class="mb-3">
                         <label class="form-label">Category Name</label>
-                        <input type="text" class="form-control" th:field="*{name}">
+                        <input type="text" class="form-control" name="name">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descriptions</label>
-                        <textarea class="form-control" th:field="*{description}" rows="3"></textarea>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >ADD</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >ADD</button>
-    </div>
-</div>
-            </form>
-</div>
 </div>
 <!-- Modal Edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/admin/catalog/update" method="post">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5">Edit Category</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+        <form action="<%=request.getContextPath()%>/admin/catalog/update" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Edit Category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Category ID</label>
@@ -426,14 +434,14 @@ const handleEditCatalog= (id)=>{
                         <textarea class="form-control" name="description" id="description_edit" rows="3"></textarea>
                     </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        UPDATE
+                    </button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
-                    UPDATE
-                </button>
-            </div>
-        </div>
         </form>
     </div>
 </div>
@@ -663,5 +671,4 @@ const handleEditCatalog= (id)=>{
 <script src="./js/category.js"></script>
 
 </body>
-
 </html>

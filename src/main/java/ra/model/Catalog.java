@@ -1,11 +1,29 @@
-package ra.model.domain;
+package ra.model;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
 public class Catalog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "catalog")
+    private List<Product> products;
     public Catalog() {
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public Catalog(Long id, String name, String description) {

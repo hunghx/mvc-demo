@@ -5,35 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c395f83-dda3-43b0-95a5-fa891e85d28d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/controller/CatalogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/ICatalogDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/IProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/impl/CatalogDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/impl/ProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/service/ICatalogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/service/IProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/service/impl/CatalogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/service/impl/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fonts/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/avatars/avatar-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/avatars/avatar-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/avatars/avatar-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/avatars/avatar-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/avatars/avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/icons/icon-48x48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/photos/unsplash-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/photos/unsplash-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/img/photos/unsplash-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/js/app.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/product.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/ICatalogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/dao/IProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/category.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/product.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/user.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ecc80785-fe6c-421b-9b5b-3cadfdf01fe3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ecc80785-fe6c-421b-9b5b-3cadfdf01fe3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/advice/AdviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/advice/AdviceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/controller/CatalogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/controller/CatalogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/IAccountDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/ICatalogDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/IGenericDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/IProductDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/impl/AccountDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/impl/CatalogDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/dao/impl/ProductDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/exception/UserNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/domain/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/domain/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/model/Catalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/domain/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/domain/OrderDetail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/dto/request/FormLoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/dto/request/FormRegisterDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/dto/request/FormUpdateAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/model/dto/response/AccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/IAccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/ICatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/service/ICatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/impl/AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/impl/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/service/impl/CatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/service/impl/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/service/impl/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/ultil/ConnectionDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/ultil/ValidateAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/upload/hinh-anh-gai-han-dep-nhat_100341733.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload/hinh-anh-gai-han-dep-nhat_100341733.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/upload/th (1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload/th (1).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/upload/th.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload/th.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/product.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/form-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/form-register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/layout/foot.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/layout/head.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,14 +71,32 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ProjectMd4" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -81,7 +125,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/hung1/OneDrive/Desktop/ProjectMd4/src/main/webapp/WEB-INF/view/admin",
+    "last_opened_file_path": "C:/Users/hung1/OneDrive/Desktop/ProjectMd4_demo",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -107,6 +151,7 @@
       <recent name="C:\Users\hung1\OneDrive\Desktop\ProjectMd4\src\main\resources\assets\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hung1\OneDrive\Desktop\ProjectMd4_demo\src\main\webapp" />
       <recent name="C:\Users\hung1\OneDrive\Desktop\ProjectMd4\src\main\resources\assets" />
     </key>
   </component>
@@ -210,10 +255,22 @@
       <workItem from="1694177922423" duration="5277000" />
       <workItem from="1694432216723" duration="10996000" />
       <workItem from="1694604944754" duration="2873000" />
+      <workItem from="1696855445861" duration="8525000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ra/controller/CatalogController.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

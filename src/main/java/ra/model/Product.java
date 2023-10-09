@@ -1,14 +1,22 @@
-package ra.model.domain;
+package ra.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id;
     private String name;
     private String description;
     private double price;
+    @Column(columnDefinition = "text")
     private String imageUrl;
     private int stock;
     private boolean status =true;
-    private int catalogId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "catalog_id")
+    private Catalog catalog;
 
     public Product() {
     }
@@ -69,11 +77,11 @@ public class Product {
         this.status = status;
     }
 
-    public int getCatalogId() {
-        return catalogId;
+    public Catalog getCatalog() {
+        return catalog;
     }
 
-    public void setCatalogId(int catalogId) {
-        this.catalogId = catalogId;
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
     }
 }

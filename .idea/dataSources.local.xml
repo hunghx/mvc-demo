@@ -14,6 +14,7 @@
           <node kind="schema">
             <name qname="@" />
             <name qname="projects_md4" />
+            <name qname="hehehe" />
           </node>
         </introspection-scope>
       </schema-mapping>

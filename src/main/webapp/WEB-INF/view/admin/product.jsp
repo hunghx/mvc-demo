@@ -1,6 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: hung1
+  Date: 10/9/2023
+  Time: 7:52 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,19 +19,51 @@
           content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
+    <link rel="shortcut icon" href="/img/icons/icon-48x48.png"/>
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/"/>
 
     <title>AdminKit Demo - Bootstrap 5 Admin Template</title>
+
+    <link href="/css/app.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-    <link href="css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+<script>
+    const handleEditProduct= (id)=>{
+        console.log(id)
+
+        $.ajax({
+            url: `http://localhost:8080/admin/product/edit/`+id,
+            method: 'GET',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json'
+            },
+            success: function(data) {
+                console.log(data);
+                // đẩy dữ liệu lên html
+                $("#id_edit").val(data.id)
+                $("#name_edit").val(data.name)
+                $("#description_edit").val(data.description)
+                $("#price_edit").val(data.price)
+                $("#image_edit").attr("src","/upload/"+data.imageUrl)
+                let status = data.status?"true":"false";
+                $("#stock_edit").val(data.stock)
+                $("#status_edit").val(status)
+                $("#catalog_edit").val(data.catalog.id)
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+</script>
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
@@ -45,13 +85,13 @@
                         <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin/product">
+                <li class="sidebar-item active">
+                    <a class="sidebar-link" href="#">
                         <i class="align-middle" data-feather="square"></i> <span class="align-middle">Product</span>
                     </a>
                 </li>
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="#">
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="user.html">
                         <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                     </a>
                 </li>
@@ -154,7 +194,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="/img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Vanessa Tucker">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -169,7 +209,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="/img/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="William Harris">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -183,7 +223,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="/img/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Christina Mason">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -196,7 +236,7 @@
                                 <a href="#" class="list-group-item">
                                     <div class="row g-0 align-items-center">
                                         <div class="col-2">
-                                            <img src="img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
+                                            <img src="/img/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
                                                  alt="Sharon Lessman">
                                         </div>
                                         <div class="col-10 ps-2">
@@ -220,7 +260,7 @@
                         </a>
 
                         <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                            <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
+                            <img src="/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall"/>
                             <span class="text-dark">Chris Hung</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -246,15 +286,15 @@
             <div class="container-fluid p-0">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Demo User Table</h3>
+                        <h3 class="card-title">Demo Product Table</h3>
                         <nav class="navbar navbar-expand-lg bg-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="#">
-                                    <button type="button" class="btn btn-success">+ Create new Account</button>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">+ Add new Product</button>
                                 </a>
                                 <form class="d-flex" role="search">
                                     <input class="form-control me-2 fst-italic" type="search"
-                                           placeholder="Enter user's name... "
+                                           placeholder="Enter product's name... "
                                            aria-label="Search">
                                     <button class="btn btn-outline-success" type="submit">Search</button>
                                 </form>
@@ -267,202 +307,43 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Username</th>
+                                <th>Name</th>
                                 <th>Image</th>
-                                <th>FullName</th>
-                                <th>Date of birth</th>
-                                <th>About</th>
+                                <th>Description</th>
+                                <th>Stock</th>
+                                <th>Price</th>
                                 <th>Status</th>
-                                <th>Created Date</th>
+                                <th>Category</th>
                                 <th colspan="2">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>user1</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>user2</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>user3</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>user4</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>user5</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>user6</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>user7</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>user8</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>user9</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>user10</td>
-                                <td><img width="40%" src="img/avatars/avatar-3.jpg" alt="avt"></td>
-                                <td>Chris Hung</td>
-                                <td>22/02/2022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                </td>
-                                <td>Online</td>
-                                <td>28/10/2022</td>
-                                <td>
-                                    <button type="button" class="btn btn-success">Unlock</button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger">Lock</button>
-                                </td>
-                            </tr>
+                            <c:forEach items="${listPro}" var="p">
+                                <tr>
+                                    <td>${p.id}</td>
+                                    <td >${p.name}</td>
+                                    <td><img src="/upload/${p.imageUrl}" width="100" height="200" style="object-fit: cover" alt="#"></td>
+                                    <td >${p.description}</td>
+                                    <td >${p.stock}</td>
+                                    <td>${p.price} $</td>
+                                    <td>${p.status?'Ready':'Hidden'}</td>
+                                    <td>${p.catalog.name}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#editModal" onclick="handleEditProduct(${p.id})" >Edit</button>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/product/delete/${p.id}" onclick="return confirm('Bạn có chắc muốn xóa không')" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+
 
                             </tbody>
 
                         </table>
                     </div>
+                    <!-- /.card-body -->
                     <nav aria-label="Page navigation example ">
                         <ul class="pagination float-end mx-4">
                             <li class="page-item disabled">
@@ -476,13 +357,9 @@
                             </li>
                         </ul>
                     </nav>
-                    <!-- /.card-body -->
                 </div>
-
             </div>
-
         </main>
-
 
         <footer class="footer">
             <div class="container-fluid">
@@ -516,7 +393,127 @@
     </div>
 </div>
 
-<script src="js/app.js"></script>
+<!-- Modal Add -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="<%=request.getContextPath()%>/admin/product/add" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descriptions</label>
+                        <textarea class="form-control" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file" class="form-control" name="file" >
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-control">
+                            <option value="true">Ready</option>
+                            <option value="false">Hidden</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="catalogId" class="form-control">
+                            <C:forEach items="${listCat}" var="c">
+                                <option  value="${c.id}">${c.name}</option>
+                            </C:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >ADD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal Edit -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="<%=request.getContextPath()%>/admin/product/update" enctype="multipart/form-data" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Edit Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Id</label>
+                        <input type="text" class="form-control" name="id" id="id_edit" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"> Name</label>
+                        <input type="text" class="form-control" name="name" id="name_edit">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descriptions</label>
+                        <textarea class="form-control" name="description" id="description_edit" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <img src="" width="100" height="150" style="object-fit: cover" alt="#" id="image_edit">
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" id="price_edit" min="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock</label>
+                        <input type="number" class="form-control" name="stock" id="stock_edit" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" id="status_edit" class="form-control">
+                            <option value="true">Ready</option>
+                            <option value="false">Hidden</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Catalog</label>
+                        <select id="catalog_edit" name="catalogId" class="form-control">
+                            <c:forEach items="${listCat}" var="c">
+                             <option value="${c.id}">${c.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                        UPDATE
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="/js/app.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -740,6 +737,6 @@
     });
 </script>
 
-</body>
 
+</body>
 </html>

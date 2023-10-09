@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
-import ra.dao.IProductDao;
-import ra.model.domain.Product;
+import ra.dao.IProductRepository;
+import ra.model.Product;
 import ra.service.IProductService;
 
 import java.io.File;
@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.List;
 @Service
 public class ProductService implements IProductService {
-    private String uploadPath = "C:\\Users\\hung1\\OneDrive\\Desktop\\ProjectMd4\\src\\main\\webapp\\WEB-INF\\upload\\";
+    private String uploadPath = "C:\\Users\\hung1\\OneDrive\\Desktop\\ProjectMd4_demo\\src\\main\\webapp\\upload\\";
     @Autowired
-    private IProductDao productDao;
+    private IProductRepository productDao;
     @Override
     public List<Product> getAll() {
         return productDao.findAll();
@@ -23,7 +23,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(Long id) {
-        return productDao.findById(id);
+        return productDao.findById(id).orElse(null);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ProductService implements IProductService {
     public void update(Product p, MultipartFile file) {
         String fileName = null;
         if(file.isEmpty()){
-            fileName=productDao.findById(p.getId()).getImageUrl();
+            fileName=productDao.findById(p.getId()).orElse(new Product()).getImageUrl();
         }else {
             fileName = file.getOriginalFilename();
             try {
@@ -63,6 +63,6 @@ public class ProductService implements IProductService {
 
     @Override
     public void deleteById(Long aLong) {
-        productDao.delete(aLong);
+        productDao.deleteById(aLong);
     }
 }

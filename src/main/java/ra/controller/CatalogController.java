@@ -3,11 +3,10 @@ package ra.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ra.model.domain.Catalog;
+import ra.model.Catalog;
 import ra.service.ICatalogService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +35,7 @@ public class CatalogController {
     @GetMapping(value = "/edit/{id}")
     public void edit(HttpServletResponse response, @PathVariable("id") Long id){
         Catalog cat = catalogService.findById(id);
+        cat.setProducts(null);
         String data = GSON.toJson(cat);
         response.setHeader("Content-Type","application/json");
         response.setStatus(200);
@@ -47,7 +47,9 @@ public class CatalogController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }finally {
-            out.close();
+            if (out != null) {
+                out.close();
+            }
         }
     }
     @PostMapping("/update")
